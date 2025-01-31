@@ -1,27 +1,16 @@
 # Cupertino Sidemenu
 
-&#x20;
+https://github.com/user-attachments/assets/56109728-a54d-43ca-a881-45acd7e6a003
 
-A **customizable Cupertino-style side menu** for Flutter with **smooth animations** and **haptic feedback**. Easily swipe or use buttons to open left and right side menus in your app.
+Inspired by **ChatGPT**, **DeepSeek**, **Messenger**, **Twitter** and **Lydia** side menus.
+
+A **customizable Cupertino-style side menu** for Flutter with **smooth animations** and **haptic feedback**. Easily swipe or use buttons to open left and/or right side menus in your app.
 
 ## 🚀 Features
 
-✔ **Swipe Gesture Navigation** – Open and close menus with smooth gestures. ✔ **Customizable Left & Right Menus** – Pass any widgets inside the menus. ✔ **Built-in Haptic Feedback** – Enhances user experience. ✔ **Programmatic Control** – Open/close menus using a controller. ✔ **Animation Speed Configuration** – Customize the menu transition speed. ✔ **Lightweight & Easy to Use** – Minimal setup required.
-
-## 📦 Installation
-
-Add `cupertino_sidemenu` to your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  cupertino_sidemenu: ^0.0.1
-```
-
-Then, run:
-
-```sh
-flutter pub get
-```
+- **Swipe Gesture and Controller Navigation** – Open and close menus with smooth swipe gestures or with buttons. 
+- **Customizable Left & Right Menus** – Pass any widgets inside the menus.
+- **Customizable Parameters** - Width of the menus, Haptic feedbacks, Animation speed, Center page opacity
 
 ## 🎮 Usage
 
@@ -99,12 +88,17 @@ controller.closeMenu(); // Closes any open menu
 
 | Property            | Type      | Default | Description                                      |
 | ------------------- | --------- | ------- | ------------------------------------------------ |
-| `menuWidthOfScreen` | `double`  | `0.80`  | Width of side menu as a percentage of the screen |
-| `hapticFeedback`    | `bool`    | `true`  | Enables haptic feedback on swipe                 |
-| `animationSpeed`    | `int`     | `200`   | Controls animation duration in milliseconds      |
+| `centerPage`        | `Widget`  | -       | The main page in the center                      |
 | `leftMenu`          | `Widget?` | `null`  | Left menu content (optional)                     |
 | `rightMenu`         | `Widget?` | `null`  | Right menu content (optional)                    |
-| `centerPage`        | `Widget`  | -       | The main page in the center                      |
+| `menuWidthOfScreen` | `double`  | `0.80`  | Width of side menu as a percentage of the screen [0.0,1.0] |
+| `hapticFeedback`    | `bool`    | `true`  | Enables haptic feedback on swipe                 |
+| `animationSpeed`    | `int`     | `200`   | Controls animation duration in milliseconds      |
+| `centerBackgroundOpacity`        | `double`  | `0.25`       | Opacity of the center page when menu is open [0.0,1.0]                  |
+
+
+
+
 
 ## 🛠️ Installation for Local Development
 
@@ -129,42 +123,4 @@ We welcome contributions! To contribute:
 1. Fork the repo & create a new branch.
 2. Make your changes.
 3. Create a Pull Request.
-
-## 📜 License
-
-This project is licensed under the **MIT License**. See the full license in the `LICENSE` file.
-
-```
-MIT License
-
-Copyright (c) 2024 Tiberio Zolzettich
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
-### **🚀 Now You're Ready to Share!**
-
-- Upload this `README.md` file to **GitHub**.
-- Ensure it's included in your **pub.dev** package.
-- Update the `version` in `pubspec.yaml` before publishing new versions.
-
-Let me know if you need any modifications! 🚀🔥
 
