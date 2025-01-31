@@ -79,8 +79,10 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
     double sidemenu = screenWidth * widget.menuWidthOfScreen;
 
     widget.controller?.attach(
-      openLeft: () => animateToPosition(sidemenu),
-      openRight: () => animateToPosition(-sidemenu),
+      openLeft: () =>
+          widget.leftMenu != null ? animateToPosition(sidemenu) : null,
+      openRight: () =>
+          widget.rightMenu != null ? animateToPosition(-sidemenu) : null,
       close: () => animateToPosition(0),
     );
 
@@ -89,7 +91,10 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
         onHorizontalDragUpdate: (details) {
           setState(() {
             offsetX += details.primaryDelta!;
-            offsetX = offsetX.clamp(-sidemenu, sidemenu);
+            offsetX = offsetX.clamp(
+              widget.rightMenu != null ? -sidemenu : 0,
+              widget.leftMenu != null ? sidemenu : 0,
+            );
           });
         },
         onHorizontalDragEnd: (details) {
@@ -97,13 +102,13 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
           double targetOffset = 0;
 
           if (velocity.abs() > 100) {
-            if (offsetX > 0) {
+            if (offsetX > 0 && widget.leftMenu != null) {
               if (velocity > 0) {
                 targetOffset = sidemenu;
               } else {
                 targetOffset = 0;
               }
-            } else if (offsetX < 0) {
+            } else if (offsetX < 0 && widget.rightMenu != null) {
               if (velocity < 0) {
                 targetOffset = -sidemenu;
               } else {
@@ -126,14 +131,17 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
           scrollDirection: Axis.horizontal,
           physics: const NeverScrollableScrollPhysics(),
           child: Transform.translate(
-            offset: Offset(offsetX - sidemenu, 0),
+            offset:
+                Offset(offsetX - (widget.leftMenu != null ? sidemenu : 0), 0),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  width: sidemenu,
-                  height: MediaQuery.of(context).size.height,
-                  child: widget.leftMenu ?? const SizedBox(),
-                ),
+                if (widget.leftMenu != null)
+                  SizedBox(
+                    width: sidemenu,
+                    height: MediaQuery.of(context).size.height,
+                    child: widget.leftMenu ?? const SizedBox(),
+                  ),
                 GestureDetector(
                   onTap: () {
                     if (offsetX != 0) {
@@ -164,11 +172,12 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: sidemenu,
-                  height: MediaQuery.of(context).size.height,
-                  child: widget.rightMenu ?? const SizedBox(),
-                ),
+                if (widget.rightMenu != null)
+                  SizedBox(
+                    width: sidemenu,
+                    height: MediaQuery.of(context).size.height,
+                    child: widget.rightMenu,
+                  ),
               ],
             ),
           ),
