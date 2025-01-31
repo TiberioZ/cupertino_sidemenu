@@ -1,6 +1,6 @@
 # Cupertino Sidemenu
 
-https://github.com/user-attachments/assets/56109728-a54d-43ca-a881-45acd7e6a003
+![Cupertino Sidemenu](/public/Cupertino%20Sidemenu.mov)
 
 Inspired by **ChatGPT**, **DeepSeek**, **Messenger**, **Twitter** and **Lydia** side menus.
 
