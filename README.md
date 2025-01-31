@@ -1,6 +1,9 @@
 # Cupertino Sidemenu
 
-![Cupertino Sidemenu](/public/Cupertino%20Sidemenu.mov)
+<figure class="video_container">
+  <iframe src="public/Cupertino Sidemenu.mov" frameborder="0" allowfullscreen="true"> 
+</iframe>
+</figure>
 
 Inspired by **ChatGPT**, **DeepSeek**, **Messenger**, **Twitter** and **Lydia** side menus.
 
