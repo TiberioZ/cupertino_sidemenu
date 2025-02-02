@@ -2,6 +2,10 @@
 
 - Release Cupertino Sidemenu
 
-## 0.0.2
+## 0.0.2
 
-- leftMenu & rightMenu Optional
+- leftMenu & rightMenu are now optional
+
+## 0.0.3
+
+- Custom animation curve

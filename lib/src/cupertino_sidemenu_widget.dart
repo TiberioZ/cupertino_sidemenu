@@ -9,7 +9,8 @@ class CupertinoSidemenu extends StatefulWidget {
     this.rightMenu,
     this.menuWidthOfScreen = 0.80,
     this.hapticFeedback = true,
-    this.animationSpeed = 200,
+    this.animationSpeed = 300,
+    this.animationCurves = Curves.easeOutCubic,
     this.centerBackgroundOpacity = 0.25,
     this.controller,
     super.key,
@@ -23,6 +24,9 @@ class CupertinoSidemenu extends StatefulWidget {
 
   /// Animation speed in milliseconds.
   final int animationSpeed;
+
+  /// Animation curve.
+  final Curve animationCurves;
 
   /// Opacity of the background when the menu is open.
   final double centerBackgroundOpacity;
@@ -64,7 +68,7 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
     lastOffsetX = targetOffset;
 
     _animation = Tween<double>(begin: offsetX, end: targetOffset).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
+      CurvedAnimation(parent: _controller, curve: widget.animationCurves),
     )..addListener(() {
         setState(() {
           offsetX = _animation.value;
@@ -157,7 +161,7 @@ class CupertinoSidemenuState extends State<CupertinoSidemenu>
                         IgnorePointer(
                           ignoring: offsetX.abs() == 0,
                           child: AnimatedContainer(
-                            curve: Curves.easeOut,
+                            curve: widget.animationCurves,
                             duration:
                                 Duration(milliseconds: widget.animationSpeed),
                             width: screenWidth,
