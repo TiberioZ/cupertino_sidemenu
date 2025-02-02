@@ -10,11 +10,9 @@ A **customizable Cupertino-style side menu** for Flutter with **smooth animation
 
 - **Swipe Gesture and Controller Navigation** – Open and close menus with smooth swipe gestures or with buttons. 
 - **Customizable Left & Right Menus** – Pass any widgets inside the menus.
-- **Customizable Parameters** - Width of the menus, Haptic feedbacks, Animation speed, Center page opacity
+- **Customizable Parameters** - Width of the menus, Haptic feedbacks, Animation speed, Animation curves, Center page opacity
 
-## 🎮 Usage
-
-### **Basic Example**
+## 🔥 Try it (demo code)
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -74,9 +72,54 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-## 🔄 Programmatic Control
 
-To **open or close the menus** programmatically, use the `CupertinoSidemenuController`:
+## 👉 Custom Usage
+
+### Step 1 : Cupertino Sidemenus
+
+You can create **both menus** or only **one menu** if you need just one side menu.
+
+```dart
+import 'package:cupertino_sidemenu/cupertino_sidemenu.dart';
+
+CupertinoSidemenu(
+        centerPage: //widget,
+        leftMenu: //optionnal widget,
+        rightMenu: //optionnal widget,
+)
+```
+
+### Step 2 : Add buttons to open and close menus
+
+To **open or close the menus** programmatically (with buttons or something else), use the `CupertinoSidemenuController`:
+
+
+```dart
+import 'package:cupertino_sidemenu/cupertino_sidemenu.dart';
+
+final controller = CupertinoSidemenuController(); // Initialize controller
+
+CupertinoSidemenu(
+        controller : controller  // Pass it to the widget
+        centerPage: CupertinoPageScaffold(
+          navigationBar: CupertinoNavigationBar(
+            leading: CupertinoButton(
+              onPressed: controller.openLeftMenu,  // Open the left menu on pressed
+              child: const Icon(
+                CupertinoIcons.sidebar_left,
+              ),
+            ),
+            trailing: CupertinoButton(
+              onPressed: controller.openRightMenu,  // Open the right menu on pressed
+              child: const Icon(
+                CupertinoIcons.sidebar_right,
+              ),
+            ),
+          ),
+        leftMenu: //widget,
+        rightMenu: //widget,
+)
+```
 
 ```dart
 controller.openLeftMenu(); // Opens the left menu
@@ -84,7 +127,7 @@ controller.openRightMenu(); // Opens the right menu
 controller.closeMenu(); // Closes any open menu
 ```
 
-## ⚙️ Configuration Options
+### Configuration Options
 
 | Property            | Type      | Default | Description                                      |
 | ------------------- | --------- | ------- | ------------------------------------------------ |
@@ -93,34 +136,12 @@ controller.closeMenu(); // Closes any open menu
 | `rightMenu`         | `Widget?` | `null`  | Right menu content (optional)                    |
 | `menuWidthOfScreen` | `double`  | `0.80`  | Width of side menu as a percentage of the screen [0.0,1.0] |
 | `hapticFeedback`    | `bool`    | `true`  | Enables haptic feedback on swipe                 |
-| `animationSpeed`    | `int`     | `200`   | Controls animation duration in milliseconds      |
+| `animationSpeed`    | `int`     | `300`   | Controls animation duration in milliseconds      |
+| `animationCurves`    | `Curves`     | `Curves.easeOutCubic`   | Controls animation curves transition     |
 | `centerBackgroundOpacity`        | `double`  | `0.25`       | Opacity of the center page when menu is open [0.0,1.0]                  |
+| `controller`    | `CupertinoSidemenuController?`     | -   | To **open or close the menus** programmatically (with buttons)     |
 
+---
 
-
-
-
-## 🛠️ Installation for Local Development
-
-If you are working on this package and need to test it locally in another project, use a **path dependency**:
-
-```yaml
-dependencies:
-  cupertino_sidemenu:
-    path: ../cupertino_sidemenu
-```
-
-Run:
-
-```sh
-flutter pub get
-```
-
-## 🤝 Contributing
-
-We welcome contributions! To contribute:
-
-1. Fork the repo & create a new branch.
-2. Make your changes.
-3. Create a Pull Request.
+Made by Tiberio Zolzettich
 
