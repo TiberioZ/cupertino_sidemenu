@@ -1,6 +1,6 @@
 name: cupertino_sidemenu
 description: "A Flutter package inspired by ChatGPT menu to create a side menu that opens with a swipe."
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/TiberioZ/cupertino_sidemenu
 
 environment:
